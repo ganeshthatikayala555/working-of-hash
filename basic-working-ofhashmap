@@ -1,0 +1,30 @@
+class Hash {
+    private int size;
+    private String array[];
+    public Hash(int size){
+        this.size=size;
+        this.array=new String[size];
+    }
+    public  int calhash(String key){
+        int hash=0;
+        for(char c:key.toCharArray()){
+            hash+=(int)c;
+        }
+        return hash%size;
+    }
+    public void insert(String key,String value){
+        int index=calhash(key);
+        array[index]=value;
+    }
+    public void get(String key){
+        int index=calhash(key);
+        System.out.println(array[index]);
+    }
+    public static void main(String[] args) {
+        Hash h= new Hash(5);
+        h.insert("apple","sweet");
+         h.insert("appe","swee");
+        h.get("apple");
+        h.get("appe");
+    }
+}
